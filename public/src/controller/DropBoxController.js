@@ -27,6 +27,8 @@ class DropBoxController
     [...files].forEach(file=> {
 
       promises.push(new Promise((resolve, reject)=> {
+        let ajax = new XMLHttpRequest();
+
         ajax.open('POST', '/upload');
 
         ajax.onload = event => {
@@ -43,6 +45,7 @@ class DropBoxController
 
         let formData = new FormData();
         formData.append('input-file', file);
+        
         ajax.send(formData);
       }));
     });
